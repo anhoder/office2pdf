@@ -1,7 +1,6 @@
 {
     "name": "alanalbert/office2pdf",
     "description": "Office文件转PDF，基于COM，仅支持Windows系统",
-    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
     "authors": [
