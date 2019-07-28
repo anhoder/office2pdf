@@ -53,7 +53,7 @@ class OfficeCOM
     public function run($type = 'all')
     {
         if (!class_exists('COM')) {
-            echo "Office COM interface not exists";
+            echo "Office COM interface not exists", PHP_EOL;
             return false;
         }
         try {
@@ -71,7 +71,7 @@ class OfficeCOM
 
             return true;
         } catch (Exception $e) {
-            echo "open office faild: ", $e->getMessage();
+            echo "open office faild: ", $e->getMessage(), PHP_EOL;
             return false;
         }
         
@@ -93,7 +93,7 @@ class OfficeCOM
                 self::$excel->Quit();
             return true;
         } catch (Exception $e) {
-            echo "close office faild: ", $e->getMessage();
+            echo "close office faild: ", $e->getMessage(), PHP_EOL;
             return false;
         }
         
@@ -107,7 +107,7 @@ class OfficeCOM
     public function getPageNumFromDoc($file) 
     {
         if (!file_exists($file)){
-            echo "file(", iconv('gbk', 'utf-8', $file), ") not exists";
+            echo "file(", iconv('gbk', 'utf-8', $file), ") not exists", PHP_EOL;
             return false;
         }
         try {
@@ -120,7 +120,7 @@ class OfficeCOM
             return $page_num;
         } catch (\Exception $e) {
             // office的错误信息编码为GBK，需要转化为utf8
-            echo iconv('GBK', 'UTF-8', $e->getMessage());
+            echo iconv('GBK', 'UTF-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
@@ -144,7 +144,7 @@ class OfficeCOM
             $presentation->Close();
             return $page_num;
         } catch (\Exception $e) {
-            echo iconv('GBK', 'utf-8', $e->getMessage());
+            echo iconv('GBK', 'utf-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
@@ -190,7 +190,7 @@ class OfficeCOM
             }
             return false;
         } catch (Exception $e) {
-            echo $e->getMessage();
+            echo iconv('GBK', 'utf-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
@@ -203,11 +203,11 @@ class OfficeCOM
      */
     public function getPageNumFromPdf($file){
         if (!file_exists($file)){
-            echo "file(", iconv('gbk', 'utf-8', $file), ") not exists";
+            echo "file(", iconv('gbk', 'utf-8', $file), ") not exists", PHP_EOL;
             return false;
         }
         if (!$fp = @fopen($file,"r")) {
-            echo "open file(", $file, ") faild";
+            echo "open file(", $file, ") faild", PHP_EOL;
             return false;
         }
         $page = 0;
@@ -231,7 +231,7 @@ class OfficeCOM
      */
     public function excel2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
-            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists";
+            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists", PHP_EOL;
             return false;
         }
         try {
@@ -240,7 +240,7 @@ class OfficeCOM
             $workbook->Close();
             return true;
         } catch (\Exception $e) {
-            echo iconv('GBK', 'utf-8', $e->getMessage());
+            echo iconv('GBK', 'utf-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
@@ -253,7 +253,7 @@ class OfficeCOM
      */
     public function ppt2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
-            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists";
+            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists", PHP_EOL;
             return false;
         }
         try {
@@ -262,7 +262,7 @@ class OfficeCOM
             $presentation->Close();
             return true;
         } catch (\Exception $e) {
-            echo iconv('GBK', 'utf-8', $e->getMessage());
+            echo iconv('GBK', 'utf-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
@@ -275,7 +275,7 @@ class OfficeCOM
      */
     public function word2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
-            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists";
+            echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists", PHP_EOL;
             return false;
         }
         try {
@@ -300,7 +300,7 @@ class OfficeCOM
             $document->Close();
             return true;
         } catch (\Exception $e) {
-            echo iconv('GBK', 'utf-8', $e->getMessage());
+            echo iconv('GBK', 'utf-8', $e->getMessage()), PHP_EOL;
             return false;
         }
     }
