@@ -3,7 +3,7 @@ Office转PDF
 
  > 该库基于Office(或WPS) COM组件，因此只支持Windows系统，其他系统可以考虑使用其他库，例如Open Office、PHPOffice。
 
- ## 安装
+## 安装
 
  * Microsoft Office或WPS
  * PHP配置开启`com.allow_dcom = true`
