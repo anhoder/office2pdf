@@ -1,21 +1,24 @@
 {
     "name": "alanalbert/office2pdf",
     "description": "Office文件转PDF，基于COM，仅支持Windows系统",
+    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Alan Albert",
-            "email": "alan1766447919@gmail.com"
+            "email": "alan1766447919@gmail.com",
+            "homepage": "https://alanalbert.github.io",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "stable",
-    "version": "1.0.0",
     "require": {},
     "require-dev": {},
     "autoload": {
         "psr-4": {
             "Office2Pdf\\": "src/"
         }
-    }
+    },
+    "keywords": ["office", "word", "ppt", "excel", "pdf"]
 }
