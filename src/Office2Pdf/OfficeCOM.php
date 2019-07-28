@@ -10,7 +10,7 @@
  * @license   MIT License
  */
 
-namespace Office;
+namespace Office2Pdf;
 
 /**
  * OfficeCOM
