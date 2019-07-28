@@ -9,6 +9,7 @@
             "email": "alan1766447919@gmail.com"
         }
     ],
+		"minimum-stability": "stable",
     "require": {},
     "require-dev": {},
     "autoload": {
