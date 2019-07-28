@@ -1,0 +1,19 @@
+{
+    "name": "alanalbert/office2pdf",
+    "description": "Office文件(Word、Excel、PPT)转PDF，基于Office COM。PHP配置需要开启com.allow_dcom=true、extension=php_com_dotnet.dll，并安装MS Office。（仅支持Windows系统）",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alan Albert",
+            "email": "alan1766447919@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Office2Pdf\\": "src/"
+        }
+    }
+}

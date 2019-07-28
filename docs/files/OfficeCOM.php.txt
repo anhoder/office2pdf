@@ -1,29 +1,54 @@
 <?php
-
 /**
- * @File:	office.class.php
- * @Author: Alan_Albert
- * @Email:  1766447919@qq.com
- * @Date:	2018-07-25 12:43:04
- * @Last Modified by:   Alan_Albert
- * @Last Modified time: 2018-07-25 16:12:56
+ * Class OfficeCOM | Office/OfficeCOM.php
+ *
+ * @source    OfficeDOM.php
+ * @package   Office
+ * @author    AlanAlbert <alan1766447919@gmail.com>
+ * @version   v1.0.0	Sunday, July 28th, 2019.
+ * @copyright Copyright (c) 2019, AlanAlbert
+ * @license   MIT License
  */
 
-// office开发文档URL：https://msdn.microsoft.com/vba/office-vba-reference
+namespace Office;
 
-class Office
+/**
+ * OfficeCOM
+ * 
+ * @property resource|null $word
+ * @property resource|null $excel
+ * @property resource|null $ppt
+ * 
+ * @method boolean      run($type = 'all')
+ * @method boolean      close($type = 'all')
+ * @method int|false    getPageNumFromDoc($file)
+ * @method int|false    getPageNumFromPpt($file)
+ * @method int|false    getPageNumFromExcel($file)
+ * @method int|false    getPageNumFromPdf($file)
+ * @method boolean      word2Pdf($source_file, $output_file)
+ * @method boolean      excel2Pdf($source_file, $output_file)
+ * @method boolean      ppt2Pdf($source_file, $output_file)
+ * 
+ */
+class OfficeCOM
 {
+    /**
+     * @var		resource|null	$word   Word文件
+     */
     private static $word = null;
+    /**
+     * @var		resource|null	$ppt    PPT文件
+     */
     private static $ppt = null;
+    /**
+     * @var		resource|null	$excel  Excel文件
+     */
     private static $excel = null;
-
-    public function __construct() {}
-    public function __destruct() {}
 
     /**
      * 运行office相关软件
-     * @param  string $type office软件: all, word, ppt, excel
-     * @return  boolean      结果: true, false
+     * @param   string $type     office type: all | word | ppt | excel
+     * @return  boolean         true | false
      */
     public function run($type = 'all')
     {
@@ -54,14 +79,14 @@ class Office
 
     /**
      * 关闭office相关软件
-     * @param  string $type office软件: all, word, ppt, excel
-     * @return boolean       结果: true, false
+     * @param  string $type     office type: all | word | ppt | excel
+     * @return boolean          true | false
      */
     public function close($type = 'all')
     {
         try {
             if (($type == 'word' || $type == 'all') && self::$word != null)
-            self::$word->Quit();
+                self::$word->Quit();
             if (($type == 'ppt' || $type == 'all') && self::$ppt != null)
                 self::$ppt->Quit();
             if (($type == 'excel' || $type == 'all') && self::$excel != null)
@@ -76,8 +101,8 @@ class Office
 
     /**
      * 获取word文件的页数
-     * @param  string $file 文件路径
-     * @return int|false       页数，失败为false
+     * @param  string $file     文件路径            file path
+     * @return int|false        页数，失败为false    page number or false
      */
     public function getPageNumFromDoc($file) 
     {
@@ -102,8 +127,8 @@ class Office
 
     /**
      * 获取ppt的页数 
-     * @param  string $file 文件路径
-     * @return int|false       页数，失败为false
+     * @param  string $file     文件路径            file path
+     * @return int|false        页数，失败为false    page number or false
      */
     public function getPageNumFromPpt($file) 
     {
@@ -126,8 +151,8 @@ class Office
 
     /**
      * 获取Excel页数（转pdf）
-     * @param  string $file 文件路径
-     * @return int|false       页数，失败返回false
+     * @param  string $file     文件路径            file path
+     * @return int|false        页数，失败返回false  page number or false
      */
     public function getPageNumFromExcel($file) 
     {
@@ -172,8 +197,9 @@ class Office
 
     /**
      * 获取PDF页数
-     * @param  string $file 文件路径
-     * @return int|false       页数，失败为false
+     * Get page number of PDF
+     * @param  string $file     文件路径            file path
+     * @return int|false        页数，失败为false    page number or false
      */
     public function getPageNumFromPdf($file){
         if (!file_exists($file)){
@@ -198,9 +224,10 @@ class Office
 
     /**
      * Excel转PDF
-     * @param  string $source_file 源文件
-     * @param  string $output_file 目标文件
-     * @return boolean              结果
+     * Excel to PDF
+     * @param  string $source_file  源文件      source file path
+     * @param  string $output_file  目标文件    object file path
+     * @return boolean              结果       true | false
      */
     public function excel2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
@@ -220,11 +247,11 @@ class Office
 
     /**
      * ppt转pdf
-     * @param  string $source_file 源文件路径
-     * @param  string $output_file 目标文件路径
-     * @return boolean              结果
+     * @param  string $source_file  源文件路径      source file path
+     * @param  string $output_file  目标文件路径    object file path
+     * @return boolean              结果           true | false
      */
-    function ppt2Pdf($source_file, $output_file) {
+    public function ppt2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
             echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists";
             return false;
@@ -242,11 +269,11 @@ class Office
 
     /**
      * word转pdf
-     * @param  string $source_file 源文件路径
-     * @param  string $output_file 目标文件路径
-     * @return boolean              结果
+     * @param  string $source_file  源文件路径          source file path
+     * @param  string $output_file  目标文件路径        object file path
+     * @return boolean              结果               true | false
      */
-    function word2Pdf($source_file, $output_file) {
+    public function word2Pdf($source_file, $output_file) {
         if (!file_exists($source_file)){
             echo "file(", iconv('gbk', 'utf-8', $source_file), ") not exists";
             return false;
@@ -278,3 +305,4 @@ class Office
         }
     }
 }
+
