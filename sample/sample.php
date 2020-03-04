@@ -14,7 +14,7 @@ $source_path_utf8 = "E:/测试.doc";                           // Word文件路�
 $source_path = iconv('UTF-8', 'GBK', $source_path_utf8);	// 转为GBK，防止中文乱码而找不到文件
 $output_path = $source_path . '.pdf';                       // PDF目标文件路径
 
-$office = new Office\OfficeCOM();
+$office = new Alan\Office2Pdf\OfficeCOM();
 $office->run('word');
 
 var_dump($office->word2Pdf($source_path, $output_path));

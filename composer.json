@@ -16,7 +16,7 @@
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "Office2Pdf\\": "src/"
+            "Alan\\Office2Pdf\\": "src/"
         }
     },
     "keywords": ["office", "word", "ppt", "excel", "pdf"]
